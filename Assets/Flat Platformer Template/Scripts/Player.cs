@@ -13,6 +13,29 @@ public class Player : MonoBehaviour {
     public Camera cam;
     public bool mirror;
 
+    public int maxHP = 100; 
+    private int currentHP;   
+
+void Startt()
+{
+    currentHP = maxHP;  // maksimale livspoints ved start.
+}
+
+// Metode til at tage skade
+public void TakeDamage(int damage)
+{
+    currentHP -= damage;
+
+    // Her kan du tilføje yderligere logik, fx spilleren dør, hvis HP når nul.
+    if (currentHP <= 0)
+    {
+        // Implementer game over eller død-logik her, fx deaktivér spillerens kontrol.
+        // Eksempel: gameObject.SetActive(false);
+        gameObject.SetActive(false);
+    }
+}
+
+
 
     private bool _canJump, _canWalk;
     private bool _isWalk, _isJump;
@@ -20,6 +43,8 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rig;
     private Vector2 _inputAxis;
     private RaycastHit2D _hit;
+
+    
 
 	void Start ()
     {
