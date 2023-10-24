@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
-
+        
         // Her kan du tilføje yderligere logik, fx spilleren dør, hvis HP når nul.
         if (currentHP <= 0)
         {
