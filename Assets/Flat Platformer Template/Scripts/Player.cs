@@ -4,7 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
     public float WalkSpeed;
     public float JumpForce;
     public AnimationClip _walk, _jump;
@@ -12,6 +13,24 @@ public class Player : MonoBehaviour {
     public Transform _Blade, _GroundCast;
     public Camera cam;
     public bool mirror;
+
+    public int maxHP = 100;
+    private int currentHP;
+
+    // Metode til at tage skade
+    public void TakeDamage(int damage)
+    {
+        currentHP -= damage;
+
+        // Her kan du tilføje yderligere logik, fx spilleren dør, hvis HP når nul.
+        if (currentHP <= 0)
+        {
+            // Implementer game over eller død-logik her, fx deaktivér spillerens kontrol.
+            // Eksempel: gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+    }
+
 
 
     private bool _canJump, _canWalk;
@@ -21,11 +40,14 @@ public class Player : MonoBehaviour {
     private Vector2 _inputAxis;
     private RaycastHit2D _hit;
 
-	void Start ()
+
+
+    void Start()
     {
         rig = gameObject.GetComponent<Rigidbody2D>();
         _startScale = transform.localScale.x;
-	}
+        currentHP = maxHP;  // maksimale livspoints ved start.
+    }
 
     void Update()
     {
