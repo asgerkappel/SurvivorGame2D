@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
         if (currentHP <= 0)
         {
             // Implementer game over eller død-logik her, fx deaktivér spillerens kontrol.
-            // Eksempel: gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
     }
