@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     {
         currentHP -= damage;
         
-        // Her kan du tilføje yderligere logik, fx spilleren dør, hvis HP når nul.
         if (currentHP <= 0)
         {
             Destroy(gameObject);
@@ -44,8 +43,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        rig = gameObject.GetComponent<Rigidbody2D>();
-        _startScale = transform.localScale.x;
+        rig = gameObject.GetComponent<Rigidbody2D>(); // Henter Rigidbody2D-komponenten fra spilleren
+        _startScale = transform.localScale.x; // Gemmer spillerens startskala
         currentHP = maxHP;  // Sætter spillerens HP til at være lig med maxHP ved start.
     }
 
