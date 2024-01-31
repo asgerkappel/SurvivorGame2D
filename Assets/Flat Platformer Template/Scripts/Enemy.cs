@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour{
-    public int health;
+    public int maxHP = 10;
     public int currentHP;
     public int damage;
     public Player playerHP;
@@ -13,7 +13,6 @@ public void TakeDamage(int damage)
     {
         currentHP -= damage;
         
-        // Her kan du tilføje yderligere logik, fx spilleren dør, hvis HP når nul.
         if (currentHP <= 0)
         {
             Destroy(gameObject);
@@ -27,6 +26,6 @@ public void TakeDamage(int damage)
     }
 
     void Start(){
-       
+       currentHP = maxHP;
 }
 }

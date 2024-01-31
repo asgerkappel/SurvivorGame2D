@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public int damage;
+    public int damage = 5;
     public float WalkSpeed;
     public float JumpForce;
     public AnimationClip _walk, _jump;
@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public Transform _Blade, _GroundCast;
     public Camera cam;
     public bool mirror;
-
+    public Enemy enemyHP;
     public int maxHP = 100;
     public int currentHP;
 
@@ -30,7 +30,11 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.tag == "Enemy"){
+            TakeDamage(damage);
+        }
+    }
 
     private bool _canJump, _canWalk;
     private bool _isWalk, _isJump;
