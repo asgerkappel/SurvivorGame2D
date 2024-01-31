@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindmillMål : MonoBehaviour
+public class WindMillMål : MonoBehaviour
 {
     
-private audiosource Mållyd; 
+//private audiosource WindMillMållyd; 
 
-    void Start()
+    /*private void Start()
     {
-        Mållyd = GetComponent<AudioSource>();
-    }
+        WindMillMållyd = GetComponent<AudioSource>();
+    }*/
 
-    void OnTriggerEnter2D(Collider2D other{
+    private void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.tag == "cart")
         {
-            Mållyd.Play();
+            //WindMill_0.Play();
             completeLevel();
         }
 
