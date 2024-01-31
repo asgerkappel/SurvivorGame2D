@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     public Transform _Blade, _GroundCast;
     public Camera cam;
     public bool mirror;
-    public Enemy enemyHP;
     public int maxHP = 100;
     public int currentHP;
 
