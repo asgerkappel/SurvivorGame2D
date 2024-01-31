@@ -6,6 +6,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
+    public int damage = 5;
     public float WalkSpeed;
     public float JumpForce;
     public AnimationClip _walk, _jump;
@@ -13,25 +14,27 @@ public class Player : MonoBehaviour
     public Transform _Blade, _GroundCast;
     public Camera cam;
     public bool mirror;
-
+    public Enemy enemyHP;
     public int maxHP = 100;
-    private int currentHP;
+    public int currentHP;
 
     // Metode til at tage skade
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
         
-        // Her kan du tilføje yderligere logik, fx spilleren dør, hvis HP når nul.
         if (currentHP <= 0)
         {
-            // Implementer game over eller død-logik her, fx deaktivér spillerens kontrol.
-            // Eksempel: gameObject.SetActive(false);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            Debug.Log("Player died.");
         }
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.tag == "Enemy"){
+            TakeDamage(damage);
+        }
+    }
 
     private bool _canJump, _canWalk;
     private bool _isWalk, _isJump;
@@ -44,9 +47,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        rig = gameObject.GetComponent<Rigidbody2D>();
-        _startScale = transform.localScale.x;
-        currentHP = maxHP;  // maksimale livspoints ved start.
+        rig = gameObject.GetComponent<Rigidbody2D>(); // Henter Rigidbody2D-komponenten fra spilleren
+        _startScale = transform.localScale.x; // Gemmer spillerens startskala
+        currentHP = maxHP;  // Sætter spillerens HP til at være lig med maxHP ved start.
     }
 
     void Update()

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: ae5c7618d8c78a34e8aa64ca6894a36d
+<<<<<<<< HEAD:Assets/Flat Platformer Template/Scripts/BladeSwing.cs.meta
+guid: 35ffcbbfbee3c8a45a81dd2b8c35b87e
+========
+guid: 795a415f62131234f9c80a333218661b
+>>>>>>>> origin/Thomsen:Assets/Flat Platformer Template/Scripts/AudioManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
