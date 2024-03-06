@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public bool mirror;
     public int maxHP = 100;
     public int currentHP;
+    public Enemy enemyHP;
 
     // Metode til at tage skade
     public void TakeDamage(int damage)
