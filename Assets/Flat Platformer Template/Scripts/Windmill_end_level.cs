@@ -10,9 +10,27 @@ public class Windmill_end_level : MonoBehaviour
     {
         if (collider.CompareTag("Cart"))
         {
-            Debug.Log("Level completed!");
-       
-            UnityEngine.SceneManagement.SceneManager.LoadScene("endscreen");
+            UnlockedNewLevel();
+            
+            // Load the next scene in the build order
+          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneController().instance.NextLevel();
         }
     }
+
+    void UnlockedLevel()
+    {
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        {
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", + 1) + 1);
+            PlayerPrefs.Save();
+        }
+    }
+
+
+
+
+
+
 }
