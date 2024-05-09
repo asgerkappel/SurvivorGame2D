@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -18,6 +19,9 @@ public class Player : MonoBehaviour
     public int currentHP;
     public Enemy enemyHP;
 
+    [SerializeField] GameObject deathscreen;
+
+
     // Metode til at tage skade
     public void TakeDamage(int damage)
     {
@@ -27,6 +31,8 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log("Player died.");
+            deathscreen.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
