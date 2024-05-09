@@ -5,20 +5,19 @@ using UnityEngine.SceneManagement;
 public class Windmill_end_level : MonoBehaviour
 {
     
-    // Example of detecting player interaction using OnTriggerEnter
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Cart"))
         {
             UnlockedNewLevel();
-            
-            // Load the next scene in the build order
-          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            //SceneController().instance.NextLevel();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(""); en id jeg kigger på
+
         }
     }
 
-    void UnlockedLevel()
+    void UnlockedNewLevel()
     {
         if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
         {
@@ -27,10 +26,5 @@ public class Windmill_end_level : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-
-
-
-
-
 
 }
