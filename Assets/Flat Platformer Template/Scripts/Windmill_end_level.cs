@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Windmill_end_level : MonoBehaviour
 {
-    
+    [SerializeField] GameObject endscreen;
     
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Cart"))
         {
             UnlockedNewLevel();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            //SceneManager.LoadScene(""); en id jeg kigger på
-
+            Time.timeScale = 0;
+            endscreen.SetActive(true);
         }
     }
 
