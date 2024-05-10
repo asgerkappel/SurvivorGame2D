@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Main menu");
         Time.timeScale = 1;
+        Killcount.KillcountValue = 0;
     }
 
     public void Resume()
@@ -29,6 +31,7 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
+        Killcount.KillcountValue = 0;
     }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour{
     public int enemymaxHP = 10;
@@ -8,6 +9,7 @@ public class Enemy : MonoBehaviour{
     public int enemydamage;
     public Player playerHP;
     public float speed;
+
 
 public void TakeDamage(int damage)
     {
@@ -17,6 +19,7 @@ public void TakeDamage(int damage)
         {
             Destroy(gameObject);
             Debug.Log("Enemy died.");
+            Killcount.KillcountValue += 1;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision){

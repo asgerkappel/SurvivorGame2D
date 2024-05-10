@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
             Debug.Log("Player died.");
             deathscreen.SetActive(true);
             Time.timeScale = 0;
+            Killcount.KillcountValue = 0;  
         }
     }
 
