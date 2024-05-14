@@ -9,8 +9,30 @@ public class Enemy : MonoBehaviour{
     public int enemydamage;
     public Player playerHP;
     public float speed;
+<<<<<<< Updated upstream
     public Cart cartHP;
     
+=======
+    private Transform wagonTransform;
+
+>>>>>>> Stashed changes
+
+    void Start(){
+       enemycurrentHP = enemymaxHP;
+       wagonTransform = GameObject.FindGameObjectWithTag("Cart").transform;
+    }
+    void Update(){
+        // Move towards the wagon
+        transform.position = Vector2.MoveTowards(transform.position, wagonTransform.position, speed * Time.deltaTime);
+        Vector3 direction = wagonTransform.position - transform.position;
+        
+        if (direction != Vector3.zero) {
+
+        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
+        }
+    }
 
 public void TakeDamage(int damage)
     {
@@ -31,8 +53,11 @@ public void TakeDamage(int damage)
             cartHP.TakeDamage(enemydamage);
         }
     }
+<<<<<<< Updated upstream
    
     void Start(){
        enemycurrentHP = enemymaxHP;
+=======
+>>>>>>> Stashed changes
 }
-}
+
