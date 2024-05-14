@@ -9,13 +9,11 @@ public class Enemy : MonoBehaviour{
     public int enemydamage;
     public Player playerHP;
     public float speed;
-<<<<<<< Updated upstream
+
     public Cart cartHP;
     
-=======
-    private Transform wagonTransform;
 
->>>>>>> Stashed changes
+    private Transform wagonTransform;
 
     void Start(){
        enemycurrentHP = enemymaxHP;
@@ -53,11 +51,4 @@ public void TakeDamage(int damage)
             cartHP.TakeDamage(enemydamage);
         }
     }
-<<<<<<< Updated upstream
-   
-    void Start(){
-       enemycurrentHP = enemymaxHP;
-=======
->>>>>>> Stashed changes
 }
-
