@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour{
     public int enemydamage;
     public Player playerHP;
     public float speed;
-
+    public Cart cartHP;
+    
 
 public void TakeDamage(int damage)
     {
@@ -26,8 +27,11 @@ public void TakeDamage(int damage)
         if(collision.gameObject.tag == "Player"){
             playerHP.TakeDamage(enemydamage);
         }
+        if(collision.gameObject.tag == "Cart"){
+            cartHP.TakeDamage(enemydamage);
+        }
     }
-
+   
     void Start(){
        enemycurrentHP = enemymaxHP;
 }
