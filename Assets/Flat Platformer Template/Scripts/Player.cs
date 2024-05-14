@@ -38,11 +38,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.tag == "Enemy"){
-            enemyHP.TakeDamage(damage);
-        }
-    }
 
     private bool _canJump, _canWalk;
     private bool _isWalk, _isJump;
