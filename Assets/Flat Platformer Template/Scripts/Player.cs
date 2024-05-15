@@ -8,7 +8,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public int damage = 5;
     public float WalkSpeed;
     public float JumpForce;
     public AnimationClip _walk, _jump;
@@ -17,9 +16,12 @@ public class Player : MonoBehaviour
     public Camera cam;
     public bool mirror;
     public int maxHP = 100;
-    public int currentHP;
-    public Enemy enemyHP;
-
+    public int _currentHP;
+    public int currentHP
+    {
+        get { return _currentHP; }
+        set { _currentHP = Mathf.Clamp(value, 0, maxHP); }
+    }
     [SerializeField] GameObject deathscreen;
 
 

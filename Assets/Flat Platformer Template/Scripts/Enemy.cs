@@ -3,35 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour{
+public class Enemy : MonoBehaviour, IDamageable
+{
     public int enemymaxHP = 10;
     public int enemycurrentHP;
     public int enemydamage;
     public Player playerHP;
     public float speed;
-
     public Cart cartHP;
-    
-
     private Transform wagonTransform;
+    public float swingSpeed = 1f;
+    public Transform swordTransform;
 
     void Start(){
        enemycurrentHP = enemymaxHP;
        wagonTransform = GameObject.FindGameObjectWithTag("Cart").transform;
+       StartCoroutine(SwingSword());
     }
-    void Update(){
-        // Move towards the wagon
-        transform.position = Vector2.MoveTowards(transform.position, wagonTransform.position, speed * Time.deltaTime);
-        Vector3 direction = wagonTransform.position - transform.position;
-        
-        if (direction != Vector3.zero) {
 
-        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+    IEnumerator SwingSword(){
+        while(true){
+            swordTransform.rotation = Quaternion.Euler(0, 0, 0);
+            swordTransform.Rotate(0, 0, 55);
+            yield return new WaitForSeconds(swingSpeed);
+            swordTransform.Rotate(0, 0, -55);
+            yield return new WaitForSeconds(swingSpeed);
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, speed * Time.deltaTime);
         }
     }
-
 public void TakeDamage(int damage)
     {
         enemycurrentHP -= enemydamage;
@@ -43,6 +42,13 @@ public void TakeDamage(int damage)
             Killcount.KillcountValue += 1;
         }
     }
+    void Update(){
+        // Move towards the wagon
+        transform.position = Vector2.MoveTowards(transform.position, wagonTransform.position, speed * Time.deltaTime);
+        Vector3 direction = wagonTransform.position - transform.position;
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.tag == "Player"){
             playerHP.TakeDamage(enemydamage);
